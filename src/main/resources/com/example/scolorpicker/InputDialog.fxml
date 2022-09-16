@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="103.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.scolorpicker.InputDialog">
+    <TextField fx:id="txt_comment" layoutX="14.0" layoutY="14.0" prefHeight="36.0" prefWidth="459.0" promptText="comment" />
+    <Button fx:id="btn_ok" layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#btnOkClicked" prefHeight="30.0" prefWidth="77.0" text="Ok" />
+    <Button fx:id="btn_cancel" layoutX="104.0" layoutY="60.0" mnemonicParsing="false" onAction="#btnCancelClicked" prefHeight="30.0" prefWidth="77.0" text="Cancel" />
+</AnchorPane>

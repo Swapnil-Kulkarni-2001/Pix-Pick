@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import javafx.embed.swing.SwingNode?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.ToggleSwitch?>
+
+<AnchorPane fx:id="anchor_pane" prefHeight="523.0" prefWidth="428.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.scolorpicker.MainController">
+   <VBox layoutX="-4.0" layoutY="-6.0" prefHeight="529.0" prefWidth="435.0">
+      <MenuBar prefHeight="18.0" prefWidth="435.0" style="-fx-background-color: white;">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <Menu mnemonicParsing="false" text="Options">
+            <MenuItem mnemonicParsing="false" onAction="#onSampleMenuClicked" text="Take sample">
+               <accelerator>
+                  <KeyCodeCombination alt="DOWN" code="X" control="UP" meta="UP" shift="UP" shortcut="UP" />
+               </accelerator>
+            </MenuItem>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#clearSampleListMenuClicked" text="Clear sample list">
+               <accelerator>
+                  <KeyCodeCombination alt="DOWN" code="Z" control="UP" meta="UP" shift="UP" shortcut="UP" />
+               </accelerator>
+            </MenuItem>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <CustomMenuItem hideOnClick="false" mnemonicParsing="false" styleClass="menu-item1" text="Unspecified Action">
+               <content>
+                  <ToggleSwitch fx:id="switch_stay_on_top" onMouseClicked="#changeStayOnTop" text="Stay on top" />
+               </content>
+            </CustomMenuItem>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#onCopyToClickBoardMenuClicked" text="Copy to clipboard">
+               <accelerator>
+                  <KeyCodeCombination alt="DOWN" code="C" control="UP" meta="UP" shift="UP" shortcut="UP" />
+               </accelerator>
+            </MenuItem>
+         </Menu>
+         <Menu mnemonicParsing="false" text="help">
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Explore more" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#aboutMenuClicked" text="About" />
+         </Menu>
+      </MenuBar>
+      <HBox prefHeight="175.0" prefWidth="435.0">
+         <StackPane prefHeight="150.0" prefWidth="150.0" style="-fx-border-color: grey;">
+            <HBox.margin>
+               <Insets bottom="10.0" left="20.0" top="20.0" />
+            </HBox.margin>
+            <SwingNode fx:id="swing_node" />
+         </StackPane>
+         <ListView fx:id="color_list" onMouseClicked="#listItemClicked" prefHeight="161.0" prefWidth="245.0">
+            <HBox.margin>
+               <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+            </HBox.margin>
+         </ListView>
+      </HBox>
+      <AnchorPane prefHeight="349.0" prefWidth="451.0">
+         <Separator layoutY="2.0" prefHeight="2.0" prefWidth="436.0">
+            <padding>
+               <Insets left="20.0" right="20.0" />
+            </padding>
+         </Separator>
+         <Separator layoutX="5.0" layoutY="160.0" prefHeight="10.0" prefWidth="428.0">
+            <padding>
+               <Insets left="20.0" right="20.0" />
+            </padding>
+         </Separator>
+         <VBox layoutX="1.0" prefHeight="165.0" prefWidth="436.0">
+            <HBox prefHeight="60.0" prefWidth="436.0">
+               <Label fx:id="pixel_color" prefHeight="40.0" prefWidth="173.0" style="-fx-border-color: grey; -fx-border-width: 1;">
+                  <HBox.margin>
+                     <Insets left="20.0" top="15.0" />
+                  </HBox.margin>
+               </Label>
+               <Label fx:id="txt_sample_area" prefHeight="40.0" prefWidth="245.0" style="-fx-border-color: grey;">
+                  <HBox.margin>
+                     <Insets left="20.0" right="20.0" top="15.0" />
+                  </HBox.margin>
+               </Label>
+            </HBox>
+            <HBox prefHeight="92.0" prefWidth="436.0">
+               <VBox prefHeight="93.0" prefWidth="173.0" style="-fx-border-color: grey;">
+                  <Label fx:id="txt_coordinates" alignment="CENTER" text="X : 19080 Y : 245">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="txt_hex" text="Hex code : ">
+                     <VBox.margin>
+                        <Insets left="5.0" top="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="txt_format" text="color format">
+                     <VBox.margin>
+                        <Insets left="5.0" top="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXComboBox fx:id="color_format" focusColor="#f4f4f4" onAction="#colorFormatComboBoxClicked" prefHeight="30.0" prefWidth="153.0" promptText="Choose format" unFocusColor="#f4f4f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></JFXComboBox>
+                  <HBox.margin>
+                     <Insets left="20.0" top="10.0" />
+                  </HBox.margin>
+               </VBox>
+               <VBox prefHeight="103.0" prefWidth="244.0">
+                  <HBox.margin>
+                     <Insets left="20.0" right="20.0" top="10.0" />
+                  </HBox.margin>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <VBox layoutX="36.0" prefHeight="106.0" prefWidth="188.0">
+                        <JFXSlider fx:id="r_slider" max="255.0" prefHeight="14.0" prefWidth="141.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </JFXSlider>
+                        <JFXSlider fx:id="g_slider" max="255.0" prefHeight="14.0" prefWidth="216.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </JFXSlider>
+                        <JFXSlider fx:id="b_slider" max="255.0" prefHeight="14.0" prefWidth="220.0" />
+                     </VBox>
+                     <VBox layoutX="-2.0" layoutY="-1.0" prefHeight="106.0" prefWidth="24.0">
+                        <Label prefHeight="20.0" prefWidth="25.0" text="R : ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="3.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="22.0" text="G : ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="26.0" text="B : ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="3.0" />
+                           </VBox.margin>
+                        </Label>
+                     </VBox>
+                  </AnchorPane>
+               </VBox>
+            </HBox>
+         </VBox>
+      </AnchorPane>
+   </VBox>
+</AnchorPane>
