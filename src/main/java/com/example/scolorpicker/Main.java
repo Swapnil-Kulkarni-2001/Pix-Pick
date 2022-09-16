@@ -17,7 +17,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MainController.class.getResource("Main.fxml"));
         scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add("Style.css");
-        stage.setTitle("ScolorPicker");
+        stage.setTitle("PIX-Pick");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.getIcons().add(new Image("icon.png"));

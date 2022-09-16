@@ -9,9 +9,9 @@ import javafx.embed.swing.SwingNode;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Dialog;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
-import javafx.scene.control.*;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -22,6 +22,7 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -152,15 +153,22 @@ public class MainController implements Initializable {
     }
 
     public void aboutMenuClicked() {
-        Dialog<String> dialog = new Dialog<>();
-        dialog.setTitle("PIX-pick");
-        dialog.setHeaderText("About");
-        dialog.setContentText("Version : 1.0\nLicense : freeware\nRepo : www.google.com");
-        ButtonType type = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().add(type);
-        dialog.showAndWait();
+
+        try {
+            AboutDialogController.display();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    public void exploreMenuClicked()
+    {
+        try {
+            Desktop.getDesktop().browse(new URI("https://github.com/Swapnil-Kulkarni-2001"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void colorFormatComboBoxClicked()
     {
